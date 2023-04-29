@@ -1,13 +1,19 @@
 import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Login from "./screens/Login";
+import Layout from "./components/Layout";
 import Map from "./screens/MapScreen";
-import MenuRight from "./components/MenuRight";
 
 function App() {
   return (
-    <div className="flex-1 h-screen bg-gray-200 flex flex-row">
-      <Map />
-      <MenuRight />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<Layout />}>
+          <Route path="map" element={<Map />} />
+        </Route>
+      </Routes>
+    </Router>
   );
 }
 
