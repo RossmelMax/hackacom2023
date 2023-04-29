@@ -6,7 +6,9 @@ export default function Example() {
   const [issue, setIssue] = useState({
     title: '',
     description: '',
-    photo: null
+    photo: null,
+    latitude: 0,
+    longitude: 0
   });
 
   const cancelButtonRef = useRef(null)
