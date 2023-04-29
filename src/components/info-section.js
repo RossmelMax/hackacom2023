@@ -2,7 +2,6 @@ import pattern from './info-section.module.css';
 import useScript from '../hooks/UseScript';
 
 const InfoSection = (props) => {
-    useScript('https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js');
     useScript(`${process.env.PUBLIC_URL}/AppearOnScroll.js`);
 
     return (
