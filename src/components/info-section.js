@@ -1,6 +1,10 @@
 import pattern from './info-section.module.css';
+import useScript from '../hooks/UseScript';
 
 const InfoSection = (props) => {
+    useScript('https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js');
+    useScript(`${process.env.PUBLIC_URL}/AppearOnScroll.js`);
+
     return (
         <>
             <div className="flex flex-col">
@@ -15,7 +19,7 @@ const InfoSection = (props) => {
                 </header>
                 <main>
                     <section className="container grid grid-cols-2">
-                        <div>
+                        <div className='reveal-on-scroll invisible'>
                             <img className="z-[2] relative" src={process.env.PUBLIC_URL + 'cabin.jpg'} alt="Cabin" />
                         </div>
                         <div>
@@ -26,10 +30,10 @@ const InfoSection = (props) => {
                         <h3>Cabin2</h3>
                                 <p>Illa argumenta propria videamus, cur omnia sint paria peccata. Quamquam te quidem video minime esse deterritum. Beatus sibi videtur esse moriens. In qua quid est boni praeter summam&nbsp;voluptatem.</p>
                         </div>
-                        <div>
+                        <div className='reveal-on-scroll invisible'>
                             <img className="z-[2]" src={process.env.PUBLIC_URL + 'cabin.jpg'} alt="Cabin" />
                         </div>
-                        <div>
+                        <div className='reveal-on-scroll invisible'>
                             <img className="z-[2]" src={process.env.PUBLIC_URL + 'cabin.jpg'} alt="Cabin" />
                         </div>
                         <div>
@@ -40,7 +44,7 @@ const InfoSection = (props) => {
                         <h3>Cabin2</h3>
                                 <p>Illa argumenta propria videamus, cur omnia sint paria peccata. Quamquam te quidem video minime esse deterritum. Beatus sibi videtur esse moriens. In qua quid est boni praeter summam&nbsp;voluptatem.</p>
                         </div>
-                        <div>
+                        <div className='reveal-on-scroll invisible'>
                             <img className="z-[2]" src={process.env.PUBLIC_URL + 'cabin.jpg'} alt="Cabin" />
                         </div>
                     </section>
