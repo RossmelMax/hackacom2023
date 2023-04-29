@@ -13,6 +13,11 @@ export default function BaseForm() {
 
   const cancelButtonRef = useRef(null)
 
+  const handleSubmit = (e) => {
+
+    console.log('sent data');
+  };
+
   return (
     <Transition.Root show={open} as={Fragment}>
       <Dialog as="div" className="relative z-10" initialFocus={cancelButtonRef} onClose={setOpen}>
@@ -48,7 +53,7 @@ export default function BaseForm() {
                         Crear un evento
                       </Dialog.Title>
                       <div className="mt-2">
-                        <form>
+                        <form onSubmit={handleSubmit}>
                           <div className="space-y-12">
                             <div className="border-b border-gray-900/10 pb-12">
                               <p className="mt-1 text-sm leading-6 text-gray-600">
@@ -65,6 +70,8 @@ export default function BaseForm() {
                                       type="text"
                                       name="issue-title"
                                       id="issue-title"
+                                      value={ issue.title }
+                                      onChange={(e) => setIssue({ ...issue, title: e.target.value })}
                                       autoComplete="issue-title"
                                       className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                     />
@@ -82,6 +89,8 @@ export default function BaseForm() {
                                       rows={3}
                                       className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                       defaultValue={''}
+                                      value={issue.description}
+                                      onChange={(e) => setIssue({ ...issue, description: e.target.value })}
                                     />
                                   </div>
                                 </div>
@@ -99,7 +108,7 @@ export default function BaseForm() {
                                           className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
                                         >
                                           <span>Selecciona</span>
-                                          <input id="file-upload" name="file-upload" type="file" className="sr-only" />
+                                          <input id="file-upload" name="file-upload" type="file" className="sr-only" onChange={(e) => setIssue({ ...issue, photo: e.target.files[0] })} />
                                         </label>
                                         <p className="pl-1">o arrastra una foto</p>
                                       </div>
