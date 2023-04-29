@@ -55,9 +55,9 @@ const SignupForm = (props) => {
 
           <p className="mt-10 text-center text-sm text-gray-500">
             Ya tiene una cuenta?{' '}
-            <a href="#" onClick={ props.onSwap } className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
+            <button  onClick={ props.onSwap } className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
               Iniciar Sesion
-            </a>
+            </button>
           </p>
         </div>
         </>

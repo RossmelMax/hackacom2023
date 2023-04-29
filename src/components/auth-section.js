@@ -21,7 +21,7 @@ const AuthSection = (props) => {
     };
 
     return (
-        <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+        <div id="AuthSection" className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
             <UserTypeSelection onUserTypeChange={ handleUserTypeChange } userType={ credentials.userType }></UserTypeSelection>
             {
                 hasAccount ? (<LoginForm onSwap={ handleFormSwap }></LoginForm>) : (<SignupForm onSwap={ handleFormSwap }></SignupForm>)
