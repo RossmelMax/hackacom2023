@@ -103,14 +103,19 @@ export default function BaseForm() {
                                     <div className="text-center">
 
                                       <div className="mt-4 flex text-sm leading-6 text-gray-600">
-                                        <label
+                                        { issue.photo !== null ? (<img src={URL.createObjectURL(issue.photo)} alt='Preview'></img>) : 
+                                        (
+                                          <>
+                                          <label
                                           htmlFor="file-upload"
                                           className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
                                         >
                                           <span>Selecciona</span>
-                                          <input id="file-upload" name="file-upload" type="file" className="sr-only" onChange={(e) => setIssue({ ...issue, photo: e.target.files[0] })} />
                                         </label>
-                                        <p className="pl-1">o arrastra una foto</p>
+                                          <input id="file-upload" name="file-upload" type="file" className="sr-only" onChange={(e) => setIssue({ ...issue, photo: e.target.files[0] })} />
+                                          <p className="pl-1">o arrastra una foto</p>
+                                          </>
+                                          ) }
                                       </div>
                                       <p className="text-xs leading-5 text-gray-600">PNG, JPG, GIF up to 10MB</p>
                                     </div>
