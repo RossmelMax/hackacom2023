@@ -55,7 +55,7 @@ export default function MapScreen() {
       center={position}
       zoom={13}
       scrollWheelZoom={true}
-      style={{ width: "100%", height: "100vh" }}
+      style={{ width: "100%", height: "100vh", zIndex: 0 }}
     >
       <ZoomControl position="topright" />
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
