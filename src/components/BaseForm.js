@@ -1,7 +1,7 @@
 import { Fragment, useRef, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 
-export default function Example() {
+export default function BaseForm() {
   const [open, setOpen] = useState(true)
   const [issue, setIssue] = useState({
     title: '',

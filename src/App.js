@@ -1,10 +1,10 @@
 import logo from "./logo.svg";
 import "./App.css";
-import Example from "./components/BaseForm";
+import BaseForm from "./components/BaseForm";
 
 function App() {
   return (
-    <Example></Example>
+    <BaseForm></BaseForm>
   );
 }
 
