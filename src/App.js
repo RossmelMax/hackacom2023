@@ -6,7 +6,7 @@ import Layout from "./components/Layout";
 function App() {
   return (
     <Router>
-      <Routes>
+      <Routes initialEntries={["/login"]}>
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<Layout />} />
       </Routes>

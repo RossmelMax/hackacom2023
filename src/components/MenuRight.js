@@ -150,12 +150,18 @@ function MenuRight() {
             size="xl"
             style={{ color: "#F4EDD8" }}
           />
-          <p
+          <a
+            href="/login"
             className="ml-4 text-[#F4EDD8] transition-all duration-500 hover:text-gray-100"
             style={{ fontSize: "1.2rem", fontFamily: "Varela Round" }}
           >
-            Logout
-          </p>
+            <p
+              className="ml-4 text-[#F4EDD8] transition-all duration-500 hover:text-gray-100"
+              style={{ fontSize: "1.2rem", fontFamily: "Varela Round" }}
+            >
+              Logout
+            </p>
+          </a>
         </div>
       </div>
     </div>
