@@ -10,7 +10,7 @@ export default function Sidebar({ selectedCategory, setSelectedCategory }) {
   return (
     <div className="h-full fixed top-0 left-0 z-10 flex flex-col justify-start items-start transition-all duration-500 space-y-8 my-8">
       {/* Title */}
-      <div className="w-fit h-24 rounded-r-full transition-all duration-500 flex flex-row justify-start items-center bg-[#022A3D] shadow-lg px-5">
+      <div className="w-fit h-24 rounded-r-full transition-all duration-500 flex flex-row justify-start items-center bg-[#022A3D] shadow-lg px-5 cursor-pointer">
         <p
           className={`text-[#F4EDD8] text-3xl font-bold transition-all duration-500 pr-4`}
           style={{ fontFamily: "Varela Round" }}
@@ -22,7 +22,7 @@ export default function Sidebar({ selectedCategory, setSelectedCategory }) {
       {/* Medio Ambiente */}
       {firstHover === false ? (
         <div
-          className="w-20 h-24 rounded-r-full transition-all duration-500 flex flex-row justify-start items-center bg-green-500 shadow-lg px-5"
+          className="w-20 h-24 rounded-r-full transition-all duration-500 flex flex-row justify-start items-center bg-[#00BA35] shadow-lg px-5 cursor-pointer"
           onMouseEnter={() => setFirstHover(true)}
           onClick={() => setSelectedCategory("medioambiente")}
         >
@@ -40,7 +40,7 @@ export default function Sidebar({ selectedCategory, setSelectedCategory }) {
         </div>
       ) : (
         <div
-          className="w-full h-24 rounded-r-full transition-all duration-500 flex flex-row justify-start items-center bg-green-500 shadow-lg px-5"
+          className="w-full h-24 rounded-r-full transition-all duration-500 flex flex-row justify-start items-center bg-[#00BA35] shadow-lg px-5 cursor-pointer"
           onMouseLeave={() => setFirstHover(false)}
           onClick={() => setSelectedCategory("medioambiente")}
         >
@@ -61,7 +61,7 @@ export default function Sidebar({ selectedCategory, setSelectedCategory }) {
       {/* Abandono Animal */}
       {secondHover === false ? (
         <div
-          className="w-20 h-24 rounded-r-full transition-all duration-500 flex flex-row justify-start items-center bg-[#FFA500] shadow-lg px-5"
+          className="w-20 h-24 rounded-r-full transition-all duration-500 flex flex-row justify-start items-center bg-[#964B00] shadow-lg px-5 cursor-pointer"
           onMouseEnter={() => setSecondHover(true)}
           onClick={() => setSelectedCategory("abandonoanimal")}
         >
@@ -79,7 +79,7 @@ export default function Sidebar({ selectedCategory, setSelectedCategory }) {
         </div>
       ) : (
         <div
-          className="w-full h-24 rounded-r-full transition-all duration-500 flex flex-row justify-start items-center bg-[#FFA500] shadow-lg px-5"
+          className="w-full h-24 rounded-r-full transition-all duration-500 flex flex-row justify-start items-center bg-[#964B00] shadow-lg px-5 cursor-pointer"
           onMouseLeave={() => setSecondHover(false)}
           onClick={() => setSelectedCategory("abandonoanimal")}
         >
@@ -100,7 +100,7 @@ export default function Sidebar({ selectedCategory, setSelectedCategory }) {
       {/* Revitalización Urbana */}
       {thirdHover === false ? (
         <div
-          className="w-20 h-24 rounded-r-full transition-all duration-500 flex flex-row justify-start items-center bg-[#FF0000] shadow-lg px-5"
+          className="w-20 h-24 rounded-r-full transition-all duration-500 flex flex-row justify-start items-center bg-[#FFA500] shadow-lg px-5 cursor-pointer"
           onMouseEnter={() => setThirdHover(true)}
           onClick={() => setSelectedCategory("revitalizacionurbana")}
         >
@@ -118,7 +118,7 @@ export default function Sidebar({ selectedCategory, setSelectedCategory }) {
         </div>
       ) : (
         <div
-          className="w-full h-24 rounded-r-full transition-all duration-500 flex flex-row justify-start items-center bg-[#FF0000] shadow-lg px-5"
+          className="w-full h-24 rounded-r-full transition-all duration-500 flex flex-row justify-start items-center bg-[#FFA500] shadow-lg px-5 cursor-pointer"
           onMouseLeave={() => setThirdHover(false)}
           onClick={() => setSelectedCategory("revitalizacionurbana")}
         >
@@ -139,7 +139,7 @@ export default function Sidebar({ selectedCategory, setSelectedCategory }) {
       {/* Controversia Social */}
       {fourthHover === false ? (
         <div
-          className="w-20 h-24 rounded-r-full transition-all duration-500 flex flex-row justify-start items-center bg-[#000000] shadow-lg px-5"
+          className="w-20 h-24 rounded-r-full transition-all duration-500 flex flex-row justify-start items-center bg-[#FF0000] shadow-lg px-5 cursor-pointer"
           onMouseEnter={() => setFourthHover(true)}
           onClick={() => setSelectedCategory("controversiasocial")}
         >
@@ -157,7 +157,7 @@ export default function Sidebar({ selectedCategory, setSelectedCategory }) {
         </div>
       ) : (
         <div
-          className="w-full h-24 rounded-r-full transition-all duration-500 flex flex-row justify-start items-center bg-[#000000] shadow-lg px-5"
+          className="w-full h-24 rounded-r-full transition-all duration-500 flex flex-row justify-start items-center bg-[#FF0000] shadow-lg px-5 cursor-pointer"
           onMouseLeave={() => setFourthHover(false)}
           onClick={() => setSelectedCategory("controversiasocial")}
         >

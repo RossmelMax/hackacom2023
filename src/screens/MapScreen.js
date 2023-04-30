@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
+import BaseForm from "../components/BaseForm";
+
 // resolve Leaflet's default icon path
 import L from "leaflet";
 delete L.Icon.Default.prototype._getIconUrl;
@@ -12,11 +14,17 @@ L.Icon.Default.mergeOptions({
 });
 // end resolve
 
-export default function MapScreen({ selectedMarkers, selectedCategory }) {
+export default function MapScreen({
+  selectedMarkers,
+  selectedCategory,
+  setSelectedMarkers,
+}) {
   const position = [-17.3697, -66.1653];
   const [markerPosition, setMarkerPosition] = useState(position);
 
   const [markers, setMarkers] = useState(selectedMarkers);
+
+  const [showForm, setShowForm] = useState(false);
 
   useEffect(() => {
     setMarkers(selectedMarkers);
@@ -52,6 +60,14 @@ export default function MapScreen({ selectedMarkers, selectedCategory }) {
             e.target.openPopup();
           },
         }}
+        icon={
+          new L.Icon({
+            iconUrl: require("../assets/pin-black.png"),
+            iconAnchor: [5, 55],
+            popupAnchor: [15, -50],
+            iconSize: [40, 40],
+          })
+        }
       >
         <Popup>
           <p className="text-center">
@@ -60,19 +76,22 @@ export default function MapScreen({ selectedMarkers, selectedCategory }) {
 
           <div className="flex flex-row justify-center items-center">
             <button
-              className={`w-20 h-8 bg-${
-                selectedCategory === "medioambiente"
-                  ? "green-500"
-                  : selectedCategory === "abandonoanimal"
-                  ? "yellow-500"
-                  : selectedCategory === "revitalizacionurbana"
-                  ? "blue-500"
-                  : selectedCategory === "controversiasocial"
-                  ? "red-500"
-                  : "gray-500"
-              } rounded-full text-white font-bold`}
+              className={`w-20 h-8 rounded-full text-white font-bold`}
+              style={{
+                outline: "none",
+                backgroundColor:
+                  selectedCategory === "medioambiente"
+                    ? "#00BA35"
+                    : selectedCategory === "abandonoanimal"
+                    ? "#964B00"
+                    : selectedCategory === "revitalizacionurbana"
+                    ? "#FFA500"
+                    : selectedCategory === "controversiasocial"
+                    ? "#FF0000"
+                    : "#000000",
+              }}
               onClick={() => {
-                alert("Reporte creado");
+                setShowForm(true);
               }}
             >
               Crear
@@ -90,6 +109,24 @@ export default function MapScreen({ selectedMarkers, selectedCategory }) {
               e.target.openPopup();
             },
           }}
+          icon={
+            new L.Icon({
+              iconUrl:
+                selectedCategory === "medioambiente"
+                  ? require("../assets/pin-green.png")
+                  : selectedCategory === "abandonoanimal"
+                  ? require("../assets/pin-brown.png")
+                  : selectedCategory === "revitalizacionurbana"
+                  ? require("../assets/pin-orange.png")
+                  : selectedCategory === "controversiasocial"
+                  ? require("../assets/pin-red.png")
+                  : require("../assets/pin-black.png"),
+
+              iconAnchor: [5, 55],
+              popupAnchor: [15, -50],
+              iconSize: [40, 40],
+            })
+          }
         >
           <Popup>
             <p className="text-center text-sm font-bold">{marker.title}</p>
@@ -97,6 +134,15 @@ export default function MapScreen({ selectedMarkers, selectedCategory }) {
           </Popup>
         </Marker>
       ))}
+
+      <BaseForm
+        latitude={markerPosition[0]}
+        longitude={markerPosition[1]}
+        setNewMarker={setSelectedMarkers}
+        oldMarker={selectedMarkers}
+        open={showForm}
+        setOpen={setShowForm}
+      />
     </MapContainer>
   );
 }

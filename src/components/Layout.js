@@ -284,6 +284,17 @@ function Layout() {
             ? controversiasocialMarkers
             : []
         }
+        setSelectedMarkers={
+          selectedCategory === "medioambiente"
+            ? setMedioambienteMarkers
+            : selectedCategory === "abandonoanimal"
+            ? setAbandonoanimalMarkers
+            : selectedCategory === "revitalizacionurbana"
+            ? setRevitalizacionurbanaMarkers
+            : selectedCategory === "controversiasocial"
+            ? setControversiasocialMarkers
+            : []
+        }
         selectedCategory={selectedCategory}
       />
       <MenuRight />
