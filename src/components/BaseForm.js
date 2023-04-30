@@ -1,4 +1,4 @@
-import { Fragment, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 
 export default function BaseForm({
@@ -8,6 +8,7 @@ export default function BaseForm({
   oldMarker,
   open,
   setOpen,
+  selectedCategory,
 }) {
   const [issue, setIssue] = useState({
     title: "",
@@ -21,11 +22,13 @@ export default function BaseForm({
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     setNewMarker([
       ...oldMarker,
       {
         id: oldMarker.length + 1,
         position: [issue.latitude, issue.longitude],
+        category: selectedCategory,
         title: issue.title,
         description: issue.description,
         image: issue.photo,

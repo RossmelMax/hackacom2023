@@ -16,8 +16,8 @@ L.Icon.Default.mergeOptions({
 
 export default function MapScreen({
   selectedMarkers,
-  selectedCategory,
   setSelectedMarkers,
+  selectedCategory,
 }) {
   const position = [-17.3697, -66.1653];
   const [markerPosition, setMarkerPosition] = useState(position);
@@ -142,6 +142,7 @@ export default function MapScreen({
         oldMarker={selectedMarkers}
         open={showForm}
         setOpen={setShowForm}
+        selectedCategory={selectedCategory}
       />
     </MapContainer>
   );
