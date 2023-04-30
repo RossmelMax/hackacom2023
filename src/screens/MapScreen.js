@@ -1,11 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  MapContainer,
-  Marker,
-  Popup,
-  TileLayer,
-  ZoomControl,
-} from "react-leaflet";
+import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
 // resolve Leaflet's default icon path
@@ -18,27 +12,15 @@ L.Icon.Default.mergeOptions({
 });
 // end resolve
 
-export default function MapScreen() {
+export default function MapScreen({ selectedMarkers, selectedCategory }) {
   const position = [-17.3697, -66.1653];
   const [markerPosition, setMarkerPosition] = useState(position);
 
-  const [markers, setMarkers] = useState([
-    {
-      position: [-17.387233, -66.150651],
-      key: "marker1",
-      iconType: "default",
-    },
-    {
-      position: [-17.374199, -66.161868],
-      key: "marker2",
-      iconType: "red",
-    },
-    {
-      position: [-17.3697, -66.1653],
-      key: "marker3",
-      iconType: "blue",
-    },
-  ]);
+  const [markers, setMarkers] = useState(selectedMarkers);
+
+  useEffect(() => {
+    setMarkers(selectedMarkers);
+  }, [selectedMarkers]);
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -66,25 +48,52 @@ export default function MapScreen() {
           dragend: (e) => {
             setMarkerPosition(e.target._latlng);
           },
+          mouseover: (e) => {
+            e.target.openPopup();
+          },
         }}
       >
         <Popup>
-          A pretty CSS3 popup. <br /> Easily customizable.
+          <p className="text-center">
+            Arrastra el marcador a la ubicación del reporte
+          </p>
+
+          <div className="flex flex-row justify-center items-center">
+            <button
+              className={`w-20 h-8 bg-${
+                selectedCategory === "medioambiente"
+                  ? "green-500"
+                  : selectedCategory === "abandonoanimal"
+                  ? "yellow-500"
+                  : selectedCategory === "revitalizacionurbana"
+                  ? "blue-500"
+                  : selectedCategory === "controversiasocial"
+                  ? "red-500"
+                  : "gray-500"
+              } rounded-full text-white font-bold`}
+              onClick={() => {
+                alert("Reporte creado");
+              }}
+            >
+              Crear
+            </button>
+          </div>
         </Popup>
       </Marker>
 
       {markers.map((marker) => (
         <Marker
-          key={marker.key}
+          key={marker.id}
           position={marker.position}
           eventHandlers={{
-            dragend: (e) => {
-              console.log(e.target._latlng);
+            mouseover: (e) => {
+              e.target.openPopup();
             },
           }}
         >
           <Popup>
-            A pretty CSS3 popup. <br /> Easily customizable.
+            <p className="text-center text-sm font-bold">{marker.title}</p>
+            <p className="text-center text-xs">{marker.description}</p>
           </Popup>
         </Marker>
       ))}
